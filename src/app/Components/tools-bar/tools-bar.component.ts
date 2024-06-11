@@ -16,7 +16,7 @@ import { BarcodeScanner } from 'dynamsoft-javascript-barcode';
 })
 export class ToolsBarComponent {
 
-  path_img = ['../../../assets/img/print.png','../../../assets/img/fit_screen.png','../../../assets/img/open.png','../../../assets/img/arrow_back.png','../../../assets/img/arrow_forward.png','../../../assets/img/cancel.png','../../../assets/img/check.png']
+  path_img = ['../../../assets/img/print.png','../../../assets/img/fit_screen.png','../../../assets/img/open.png','../../../assets/img/arrow_back.png','../../../assets/img/arrow_forward.png','../../../assets/img/check.png','../../../assets/img/cancel.png']
 
   barcodeResults: any[] = [];
 
@@ -59,8 +59,8 @@ export class ToolsBarComponent {
     Dynamsoft.DWT.Containers = [{
       WebTwainId: 'dwtObject',
       ContainerId: this.containerId,
-      Width: '800px',
-      Height: '600px'
+      Width: '0px',
+      Height: '0px'
   }];
   Dynamsoft.DWT.RegisterEvent('OnWebTwainReady', () => {
     this.Dynamsoft_OnReady();
@@ -89,8 +89,6 @@ export class ToolsBarComponent {
         });
     }
   }
-
-
   barcode:string = ''
   doc:Documentdata = {}
   async processAcquiredImages():Promise<void> {
@@ -103,6 +101,9 @@ export class ToolsBarComponent {
     }
     this.dataService.setDocumentData(this.doc);
     console.log(this.dataService.getDocumentData())
+    if (this.DWObject) {
+      this.DWObject.RemoveAllImages();
+  }
   }
 
 async saveDataDocument(barcode:string,base64:string):Promise<void>{

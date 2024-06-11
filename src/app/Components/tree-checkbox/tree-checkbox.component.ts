@@ -1,4 +1,5 @@
-import {  Component, ViewChildren, QueryList, ElementRef, AfterViewInit, OnInit  } from '@angular/core';
+import {  Component, ViewChildren, QueryList, ElementRef, AfterViewInit, OnInit, OnDestroy  } from '@angular/core';
+import { DataService } from '../../data.service';
 
 @Component({
   selector: 'app-tree-checkbox',
@@ -7,11 +8,27 @@ import {  Component, ViewChildren, QueryList, ElementRef, AfterViewInit, OnInit 
   templateUrl: './tree-checkbox.component.html',
   styleUrl: './tree-checkbox.component.css'
 })
-export class TreeCheckboxComponent implements AfterViewInit {
+export class TreeCheckboxComponent implements AfterViewInit ,OnInit,OnDestroy{
   @ViewChildren('checkboxes') checkboxes!: QueryList<ElementRef>;
   checker:ElementRef[] = []
   areAllChecked = false;
-  constructor(private elementRef: ElementRef) {}
+
+  private documentdata:any
+  private documentdataSubscription:any
+
+
+  constructor(private elementRef: ElementRef,private dataservice:DataService) {
+    this.documentdata = this.dataservice.getDocumentData()
+  }
+
+  ngOnInit(): void {
+    this.documentdataSubscription = this.dataservice.documentdata$.subscribe(newData=>{
+      this.documentdata = newData
+    })
+  }
+  ngOnDestroy(): void {
+    this.documentdataSubscription.unsubscribe();
+  }
   ngAfterViewInit(): void {
     this.addCheckTolist()
   }
@@ -48,6 +65,7 @@ export class TreeCheckboxComponent implements AfterViewInit {
       headcheck.checked = false
     }
     headbox = []
+    console.log(this.documentdata)
   }
 
   checked(){

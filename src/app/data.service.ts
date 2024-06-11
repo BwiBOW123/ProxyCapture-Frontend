@@ -11,6 +11,7 @@ export class DataService {
   fitclass$ = this.fit_w_class.asObservable();
   documentdata$ = this.documentdata.asObservable();
 
+
   // getter
   public getIndexData(): number {
     return this.indexSubject.getValue();
