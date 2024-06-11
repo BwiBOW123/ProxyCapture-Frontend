@@ -1,0 +1,19 @@
+.box-display{
+  height: 35rem;
+}
+.flex{
+  margin: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+
+}
+.resize{
+  resize: horizontal;
+  overflow: auto;
+}
+/*    resize: horizontal;
+    overflow: auto;
+    min-width: 150px;
+    max-width: 50vw;*/
