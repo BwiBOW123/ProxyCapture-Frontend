@@ -90,27 +90,34 @@ export class ToolsBarComponent {
     }
   }
   barcode:string = ''
-  doc:Documentdata = {}
+  docs:Documentdata[] = []
   async processAcquiredImages():Promise<void> {
     this.dataService.setIndexData(1)
     this.dataService.setMaxData(this.DWObject.HowManyImagesInBuffer)
     for (let index = 0; index < this.DWObject.HowManyImagesInBuffer; index++) {
       let base64 = await this.decodeBase64([index])
-      this.barcode = await this.decodeBarcode(base64)
-      await this.saveDataDocument(this.barcode,base64)
+      let code = await this.decodeBarcode(base64)
+      await this.saveDataDocument(code,base64)
     }
-    this.dataService.setDocumentData(this.doc);
-    console.log(this.dataService.getDocumentData())
+    this.dataService.setDocumentData(this.docs);
     if (this.DWObject) {
       this.DWObject.RemoveAllImages();
-  }
+    }
   }
 
-async saveDataDocument(barcode:string,base64:string):Promise<void>{
-    if(!this.doc[barcode]){
-      this.doc[barcode] = []
-    }
-    this.doc[barcode].push(base64)
+cuntFolder:number = -1
+
+async saveDataDocument(code:string,base64:string):Promise<void>{
+  let doc:Documentdata = {barcode:"",pages:[]}
+  if(code != this.barcode){
+      this.cuntFolder++
+      this.docs.push(doc)
+      this.docs[this.cuntFolder].barcode = code
+      this.docs[this.cuntFolder].pages.push(base64)
+      this.barcode = code
+    }else{
+      this.docs[this.cuntFolder].pages.push(base64)
+  }
 }
 
   async decodeBase64(index :[number]):Promise<string>{
@@ -140,5 +147,7 @@ async saveDataDocument(barcode:string,base64:string):Promise<void>{
 }
 
 interface Documentdata{
-  [barcode:string]:string[]
+  barcode:string
+  pages:string[]
 }
+

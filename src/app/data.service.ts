@@ -5,7 +5,7 @@ export class DataService {
   private indexSubject = new BehaviorSubject<number>(0);
   private maxSubject = new BehaviorSubject<number>(0);
   private fit_w_class = new BehaviorSubject<string>("");
-  private documentdata = new BehaviorSubject<Documentdata>({});
+  private documentdata = new BehaviorSubject<Documentdata[]>([]);
   index$ = this.indexSubject.asObservable();
   max$ = this.maxSubject.asObservable();
   fitclass$ = this.fit_w_class.asObservable();
@@ -24,7 +24,7 @@ export class DataService {
   public getfitClass(): string {
     return this.fit_w_class.getValue();
   }
-  public getDocumentData(): Documentdata {
+  public getDocumentData(): Documentdata[] {
     return this.documentdata.getValue();
   }
   // setter
@@ -39,11 +39,12 @@ export class DataService {
   public setfitclass(newData: string): void {
     this.fit_w_class.next(newData);
   }
-  public setDocumentData(newData: Documentdata): void {
+  public setDocumentData(newData: Documentdata[]): void {
     this.documentdata.next(newData);
   }
 }
 interface Documentdata{
-  [barcode:string]:string[]
+  barcode:string
+  pages:string[]
 }
 

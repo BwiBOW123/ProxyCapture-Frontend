@@ -10,8 +10,6 @@ import { DataService } from '../../data.service';
   styleUrl: './display-document.component.css'
 })
 export class DisplayDocumentComponent implements OnInit, OnDestroy{
-
-
   @Input() index: number;
   @Input() max: number;
 
@@ -36,6 +34,7 @@ export class DisplayDocumentComponent implements OnInit, OnDestroy{
 
     this.maxSubscription = this.dataService.max$.subscribe(newMax => {
       this.max = newMax;
+
     });
 
     this.fitWindowSubscription = this.dataService.fitclass$.subscribe(fitclass =>{
