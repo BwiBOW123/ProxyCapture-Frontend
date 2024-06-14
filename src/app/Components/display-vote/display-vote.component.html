@@ -1,39 +1,171 @@
 <div class="display-box">
   <div class="top-bar"></div>
-  <div class="container-info">
-    <form >
-      <!--
+  <form action="">
       <div class="head-info">
-        <div class="item">
-          <label for="name">ชื่อ - นามสกุล (ผู้ถือหุ้น)</label>
-          <input class="textfield" type="text" value="Mr.name" disabled>
-        </div>
-        <div class="item">
-          <label for="name">มอบฉันทะให้</label>
-          <input class="textfield" type="text" value="Mr.lastname" disabled>
-        </div>
-        <div class="item">
-          <label for="name">ลายเซ็นผู้มอบฉันทะ</label>
-          <label class="form-control">
-            <input type="checkbox" name="checkbox" />
-            Checkbox
-          </label>
-        </div>
+        <section class="item">
+          <label class="tag-label" for="">ชื่อ - นามสกุล (ผู้ถือหุ้น)</label>
+          <input type="text" value="ชื่อไทย 123456">
+        </section>
+        <section class="item">
+          <label class="tag-label" for="">มอบฉันทะให้</label>
+          <input type="text" value="นายศร">
+        </section>
+        <section class="item">
+          <label class="tag-label" for="">ลายเซ็นผู้มอบฉันทะ</label>
+          <div class="flexbox">
+            <div class="checkbox-wrapper-33">
+              <label class="checkbox">
+                <input class="checkbox__trigger visuallyhidden" type="radio" name="f"/>
+                <span class="checkbox__symbol">
+                  <svg
+                    aria-hidden="true"
+                    class="icon-checkbox"
+                    width="28px"
+                    height="28px"
+                    viewBox="0 0 28 28"
+                    version="1"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M4 14l8 7L24 7"></path>
+                  </svg>
+                </span>
+                <p class="checkbox__textwrapper">มี</p>
+              </label>
+            </div>
+            <div class="checkbox-wrapper-33">
+              <label class="checkbox">
+                <input class="checkbox__trigger visuallyhidden" type="radio" name="f"/>
+                <span class="checkbox__symbol">
+                  <svg
+                    aria-hidden="true"
+                    class="icon-checkbox"
+                    width="28px"
+                    height="28px"
+                    viewBox="0 0 28 28"
+                    version="1"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M4 14l8 7L24 7"></path>
+                  </svg>
+                </span>
+                <p class="checkbox__textwrapper">ไม่มี</p>
+              </label>
+            </div>
+          </div>
+        </section>
       </div>
-       -->
- <form action="">
-  <div class="item">
-    <label for="name">ชื่อ - นามสกุล (ผู้ถือหุ้น)</label>
-    <input class="textfield" type="text" value="Mr.name" disabled>
-  </div>
-  <div class="item">
-    <label for="name">มอบฉันทะให้</label>
-    <input class="textfield" type="text" value="Mr.lastname" disabled>
-  </div>
-  <div class="item">
-    <div><label for="name">ลายเซ็นผู้มอบฉันทะ</label>  </div>
-  </div>
- </form>
-    </form>
-  </div>
+        <table class="fixed_header">
+          <thead>
+            <tr>
+              <th>วาระที่</th>
+              <th>เห็นด้วย</th>
+              <th>ไม่เห็นด้วย</th>
+              <th>งดออกเสียง</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of balogic; track $index) {
+              @if(item.errLogic){
+                <tr class="err">
+                  <td>{{item.header}}</td>
+                  @for (Lgic of item.Logic; track $index) {
+                    @if (Lgic) {
+                      <td>
+                        <div class="checkbox-wrapper-33">
+                          <label class="checkbox">
+                            <input class="checkbox__trigger visuallyhidden" type="radio" name="{{item.header}}" checked/>
+                            <span class="checkbox__symbol">
+                              <svg
+                                aria-hidden="true"
+                                class="icon-checkbox"
+                                width="28px"
+                                height="28px"
+                                viewBox="0 0 28 28"
+                                version="1"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path d="M4 14l8 7L24 7"></path>
+                              </svg>
+                            </span>
+                          </label>
+                        </div>
+                      </td>
+                    }@else {
+                      <td>
+                        <div class="checkbox-wrapper-33">
+                          <label class="checkbox">
+                            <input class="checkbox__trigger visuallyhidden" type="radio" name="{{item.header}}"/>
+                            <span class="checkbox__symbol">
+                              <svg
+                                aria-hidden="true"
+                                class="icon-checkbox"
+                                width="28px"
+                                height="28px"
+                                viewBox="0 0 28 28"
+                                version="1"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path d="M4 14l8 7L24 7"></path>
+                              </svg>
+                            </span>
+                          </label>
+                        </div>
+                      </td>
+                    }
+                  }
+                </tr>
+              }@else {
+                <tr class="">
+                  <td>{{item.header}}</td>
+                  @for (Lgic of item.Logic; track $index) {
+                    @if (Lgic) {
+                      <td>
+                        <div class="checkbox-wrapper-33">
+                          <label class="checkbox">
+                            <input class="checkbox__trigger visuallyhidden" type="radio" name="{{item.header}}" checked/>
+                            <span class="checkbox__symbol">
+                              <svg
+                                aria-hidden="true"
+                                class="icon-checkbox"
+                                width="28px"
+                                height="28px"
+                                viewBox="0 0 28 28"
+                                version="1"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path d="M4 14l8 7L24 7"></path>
+                              </svg>
+                            </span>
+                          </label>
+                        </div>
+                      </td>
+                    }@else {
+                      <td>
+                        <div class="checkbox-wrapper-33">
+                          <label class="checkbox">
+                            <input class="checkbox__trigger visuallyhidden" type="radio" name="{{item.header}}"/>
+                            <span class="checkbox__symbol">
+                              <svg
+                                aria-hidden="true"
+                                class="icon-checkbox"
+                                width="28px"
+                                height="28px"
+                                viewBox="0 0 28 28"
+                                version="1"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path d="M4 14l8 7L24 7"></path>
+                              </svg>
+                            </span>
+                          </label>
+                        </div>
+                      </td>
+                    }
+                  }
+                </tr>
+              }
+            }
+          </tbody>
+        </table>
+  </form>
 </div>

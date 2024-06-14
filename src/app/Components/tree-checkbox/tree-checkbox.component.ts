@@ -83,7 +83,9 @@ export class TreeCheckboxComponent implements AfterViewInit ,OnInit,OnDestroy{
     }
     headbox = []
   }
-  numFileScan:FileScan[] = []
+  numFileScan:FileScan[] = [
+    {barcode:"123456ER",pagecunt:["","",""],status:"Pending",checkbox:[]}
+  ]
 }
 interface FileScan{
   barcode:string

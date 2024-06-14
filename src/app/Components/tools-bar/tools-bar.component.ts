@@ -65,7 +65,7 @@ export class ToolsBarComponent {
   Dynamsoft.DWT.RegisterEvent('OnWebTwainReady', () => {
     this.Dynamsoft_OnReady();
   });
-  Dynamsoft.DWT.ProductKey = 't01878AUAAEyhkBY3f/9Ygdls28qKD/lqPMytBDIKKWnB1H9o8xl1sySt+CkSeWz/vboTNtTJEMaigGfm3rG4cVM6ThDaqZT1z6kGTqvvNNR3soFTj5xAyuGw3naX1y0LNAPvDNj+HHaAJbDmcgI+YcuNHiAPMAcwLwd6wO0urocv4O5MH13o4lQDp9V3lgVSx8kGTj1yTgXSD+jGabfjWiAsX84BkAfYLcDtI7sUCM6APMAuAENiTIk/eSUsPw==';
+  Dynamsoft.DWT.ProductKey = 't01898AUAADqpfiwCdum8DS4zwO0GaXGvhvvyqqHGpvCxGE+yMnPwjVU2Etw/X4PCKH60MIG3sKcz2xGDrAqUfsFCSQeahU3t9c+pAk7L7zTkd7KAU4+cQDsP47Lb1TxvmqAReM+AbcdhA5gCSy0HoAtrbfQAeYA5gHk10AMuV3H++cIxIOnXOxs6OVXAafmdaUDyOFnAqUfOISB1RNUPq+2XgDA9OTtAHmCXANeL7BQQHAF5gJ0ARllAaz+J4DGR';
   Dynamsoft.DWT.ResourcesPath = 'assets/dwt-resources';
   Dynamsoft.DWT.Load();
   }
