@@ -5,11 +5,14 @@ export class DataService {
   private indexSubject = new BehaviorSubject<number>(0);
   private maxSubject = new BehaviorSubject<number>(0);
   private fit_w_class = new BehaviorSubject<string>("");
+  private img_soruce = new BehaviorSubject<string>("");
   private documentdata = new BehaviorSubject<Documentdata[]>([]);
   index$ = this.indexSubject.asObservable();
   max$ = this.maxSubject.asObservable();
   fitclass$ = this.fit_w_class.asObservable();
   documentdata$ = this.documentdata.asObservable();
+  imgsoruce$ = this.img_soruce.asObservable();
+
 
 
   // getter
@@ -27,6 +30,9 @@ export class DataService {
   public getDocumentData(): Documentdata[] {
     return this.documentdata.getValue();
   }
+  public getImageData(): string {
+    return this.img_soruce.getValue();
+  }
   // setter
   public setIndexData(newData: number): void {
     this.indexSubject.next(newData);
@@ -42,9 +48,13 @@ export class DataService {
   public setDocumentData(newData: Documentdata[]): void {
     this.documentdata.next(newData);
   }
+  public setImageData(newData: string): void {
+    this.img_soruce.next(newData);
+  }
 }
 interface Documentdata{
   barcode:string
   pages:string[]
+  tag?:string
 }
 

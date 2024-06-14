@@ -1,10 +1,11 @@
 import { Component, ViewChildren, QueryList, ElementRef, AfterViewInit, OnInit, OnDestroy, OnChanges, Input, SimpleChanges } from '@angular/core';
 import { DataService } from '../../data.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-tree-checkbox',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './tree-checkbox.component.html',
   styleUrl: './tree-checkbox.component.css'
 })
@@ -14,7 +15,11 @@ export class TreeCheckboxComponent implements AfterViewInit ,OnInit,OnDestroy{
   areAllChecked = false;
   @Input() documentdata:any
   private documentdataSubscription:any
+  page:number = -1
 
+  plusPage():void{
+    this.page += 1
+  }
   constructor(private elementRef: ElementRef,private dataservice:DataService) {
     this.documentdata = this.dataservice.getDocumentData()
   }
@@ -56,9 +61,10 @@ export class TreeCheckboxComponent implements AfterViewInit ,OnInit,OnDestroy{
       this.checker = []
     }
   }
-  listCheckedCheckboxes(): void {
+  listCheckedCheckboxes(img:string): void {
     this.addCheckTolist()
     this.check()
+    this.dataservice.setImageData(img)
   }
 
   check(){
@@ -84,7 +90,8 @@ export class TreeCheckboxComponent implements AfterViewInit ,OnInit,OnDestroy{
     headbox = []
   }
   numFileScan:FileScan[] = [
-    {barcode:"123456ER",pagecunt:["","",""],status:"Pending",checkbox:[]}
+    {barcode:"123456ER",pagecunt:["","",""],status:"Pending",checkbox:[]},
+    {barcode:"12s6ER",pagecunt:["","",""],status:"Pending",checkbox:[]}
   ]
 }
 interface FileScan{
@@ -92,4 +99,5 @@ interface FileScan{
   pagecunt:string[]
   status:string
   checkbox:ElementRef[]
+  tag?:string
 }

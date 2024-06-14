@@ -129,7 +129,7 @@ input:checked + .checkmark{
 
 /* On mouse-over, add a grey background color */
 .container:hover input ~ .checkmark {
-  background-color: #ccc;
+  background-color: #f8f8f8;
 }
 
 

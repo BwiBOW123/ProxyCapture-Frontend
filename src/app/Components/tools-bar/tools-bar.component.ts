@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
 import { RouterLink } from '@angular/router';
 import { DataService } from '../../data.service';
@@ -14,12 +14,14 @@ import { BarcodeScanner } from 'dynamsoft-javascript-barcode';
   templateUrl: './tools-bar.component.html',
   styleUrl: './tools-bar.component.css'
 })
-export class ToolsBarComponent {
+export class ToolsBarComponent implements OnInit {
 
   path_img = ['../../../assets/img/print.png','../../../assets/img/fit_screen.png','../../../assets/img/open.png','../../../assets/img/arrow_back.png','../../../assets/img/arrow_forward.png','../../../assets/img/check.png','../../../assets/img/cancel.png']
 
   barcodeResults: any[] = [];
-
+  Folder:number = 0
+  Page:number = 0
+  MaxPage:number = 5
   constructor(private dataService: DataService,private dynamsoftService: DynamsoftService) {
   }
 
@@ -34,18 +36,26 @@ export class ToolsBarComponent {
     this.dataService.setfitclass("fitSc")
   }
   nextDoc(){
-    if(this.dataService.getIndexData() >= this.dataService.getMaxData()){
-      this.dataService.setIndexData(1);
-    }else{
-      this.dataService.setIndexData(this.dataService.getIndexData()+1)
+    if(this.dataService.getDocumentData().length != 0 ){
+      this.MaxPage = this.dataService.getDocumentData()[this.Folder].pages.length -1
+      if(this.Page >= this.MaxPage && this.Folder < this.dataService.getDocumentData().length-1){
+        this.Folder++
+        this.Page = 0
+      }else if(this.Page < this.MaxPage){
+        this.Page++
+      }
+      console.log("Folder: "+this.Folder," Page: "+this.Page)
     }
   }
   backDoc(){
-    if(this.dataService.getIndexData() < this.dataService.getMaxData()){
-      this.dataService.setIndexData(this.dataService.getMaxData());
-
-    }else{
-      this.dataService.setIndexData(this.dataService.getIndexData()-1)
+    if(this.dataService.getDocumentData().length != 0 ){
+      if(this.Page < 0 && this.Folder > 0){
+        this.Folder--
+        this.Page = this.dataService.getDocumentData()[this.Folder].pages.length -1
+      }else if(this.Page >= 0){
+        this.Page--
+      }
+      console.log("Folder: "+this.Folder," Page: "+this.Page)
     }
   }
   DWObject: WebTwain | any = null;
@@ -56,6 +66,7 @@ export class ToolsBarComponent {
   }
 
   ngOnInit(): void {
+    console.log("Folder: "+this.Folder," Page: "+this.Page)
     Dynamsoft.DWT.Containers = [{
       WebTwainId: 'dwtObject',
       ContainerId: this.containerId,
@@ -100,6 +111,8 @@ export class ToolsBarComponent {
       await this.saveDataDocument(code,base64)
     }
     this.dataService.setDocumentData(this.docs);
+    console.log(this.docs)
+    this.dataService.setImageData(this.docs[0].pages[0])
     if (this.DWObject) {
       this.DWObject.RemoveAllImages();
     }
@@ -113,6 +126,7 @@ async saveDataDocument(code:string,base64:string):Promise<void>{
       this.cuntFolder++
       this.docs.push(doc)
       this.docs[this.cuntFolder].barcode = code
+      this.docs[this.cuntFolder].tag = (this.cuntFolder-1).toString()
       this.docs[this.cuntFolder].pages.push(base64)
       this.barcode = code
     }else{
@@ -149,5 +163,6 @@ async saveDataDocument(code:string,base64:string):Promise<void>{
 interface Documentdata{
   barcode:string
   pages:string[]
+  tag?:string
 }
 

@@ -1,19 +1,26 @@
 .fitWindow{
-  width: 23rem;
-  margin: auto;
+  margin-left: 0;
+  margin-top: 5px;
+  width: 60rem;
 }
 .fitSc{
-  width: 40rem;
-  margin: auto;
+  margin-left: 190px;
+  margin-top: 5px;
+  width: 35rem;
+
 }
 .display-box{
   border-radius: 10px;
-  width: 50rem;
+  width: 60rem;
   height: 75vh;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
   overflow: hidden;
+  overflow-y: auto;
+
 }
 .top-bar{
+  position: sticky;
+  top: 0;
   width: 100%;
   height: 3rem;
   background-color: #1254B9;
@@ -21,4 +28,9 @@
 p{
   color: white;
   text-align: center;
+}
+img{
+  width: 35rem;
+  margin-left: 190px;
+  margin-top: 5px;
 }
