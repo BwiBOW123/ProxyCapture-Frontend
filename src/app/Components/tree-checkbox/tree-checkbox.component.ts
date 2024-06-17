@@ -9,19 +9,20 @@ import { CommonModule } from '@angular/common';
   templateUrl: './tree-checkbox.component.html',
   styleUrl: './tree-checkbox.component.css'
 })
-export class TreeCheckboxComponent implements AfterViewInit ,OnInit,OnDestroy{
+export class TreeCheckboxComponent implements OnInit,OnDestroy{
   @ViewChildren('checkboxes') checkboxes!: QueryList<ElementRef>;
   checker:ElementRef[] = []
-  areAllChecked = false;
+  areAllChecked = false
   @Input() documentdata:any
   private documentdataSubscription:any
-  page:number = -1
+  @Input() imageSource:string = ""
+  @Input() Page:number = 0
+  private imageSourceSubscription: any
+  private PageSubscription: any
 
-  plusPage():void{
-    this.page += 1
-  }
   constructor(private elementRef: ElementRef,private dataservice:DataService) {
     this.documentdata = this.dataservice.getDocumentData()
+    this.Page = this.dataservice.getPageData()
   }
 
   ngOnInit(): void {
@@ -31,12 +32,25 @@ export class TreeCheckboxComponent implements AfterViewInit ,OnInit,OnDestroy{
         this.addNewDataDoc()
       }
     })
+    this.imageSourceSubscription = this.dataservice.imgsoruce$.subscribe(newImg=>{
+      if(this.dataservice.getDocumentData().length > 0){
+        setTimeout(() => {
+          let page = this.dataservice.getPageData()
+          let folder =this.dataservice.getFolderData()
+          const headcheck = document.getElementById(folder+' '+page) as HTMLInputElement
+          headcheck.checked = true
+        }, 100);
+        setTimeout(()=>{
+          this.addCheckTolist()
+          this.check()
+        },200)
+      }
+    })
   }
   ngOnDestroy(): void {
     this.documentdataSubscription.unsubscribe();
-  }
-  ngAfterViewInit(): void {
-
+    this.imageSourceSubscription.unsubscribe();
+    this.PageSubscription.unsubscribe();
   }
   addNewDataDoc(){
     this.numFileScan = []
@@ -68,6 +82,7 @@ export class TreeCheckboxComponent implements AfterViewInit ,OnInit,OnDestroy{
   }
 
   check(){
+    console.log(this.numFileScan)
     let headbox:HTMLInputElement[] = []
     for (let item of this.numFileScan) {
       let itemIndex = this.numFileScan.indexOf(item);

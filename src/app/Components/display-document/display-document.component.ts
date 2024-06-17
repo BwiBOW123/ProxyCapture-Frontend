@@ -10,8 +10,6 @@ import { DataService } from '../../data.service';
   styleUrl: './display-document.component.css'
 })
 export class DisplayDocumentComponent implements OnInit, OnDestroy{
-  @Input() index: number;
-  @Input() max: number;
   @Input() imageSource: string;
 
   @Input() fitWindow:string;
@@ -24,21 +22,12 @@ export class DisplayDocumentComponent implements OnInit, OnDestroy{
 
 
   constructor(private dataService: DataService) {
-    this.index = dataService.getIndexData()
-    this.max = dataService.getMaxData()
+
     this.fitWindow = dataService.getfitClass()
     this.imageSource = dataService.getImageData()
   }
 
   ngOnInit() {
-    this.indexSubscription = this.dataService.index$.subscribe(newIndex => {
-      this.index = newIndex;
-    });
-
-    this.maxSubscription = this.dataService.max$.subscribe(newMax => {
-      this.max = newMax;
-
-    });
 
     this.fitWindowSubscription = this.dataService.fitclass$.subscribe(fitclass =>{
       this.fitWindow = fitclass

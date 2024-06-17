@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
 import { RouterLink } from '@angular/router';
 import { DataService } from '../../data.service';
 import Dynamsoft from 'dwt';
 import { WebTwain } from 'dwt/dist/types/WebTwain';
 import { DynamsoftService } from '../../dynamsoft.service';
-import { BarcodeScanner } from 'dynamsoft-javascript-barcode';
 
 @Component({
   selector: 'app-tools-bar',
@@ -24,11 +23,15 @@ export class ToolsBarComponent implements OnInit {
   MaxPage:number = 5
   constructor(private dataService: DataService,private dynamsoftService: DynamsoftService) {
   }
-
-  getDataservice(){
-    console.log(this.dataService.getIndexData())
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+      if(event.keyCode==37){
+        this.backDoc()
+      }
+      if(event.keyCode==39){
+        this.nextDoc()
+      }
   }
-
   fitWindow(){
     this.dataService.setfitclass("fitWindow")
   }
@@ -37,25 +40,29 @@ export class ToolsBarComponent implements OnInit {
   }
   nextDoc(){
     if(this.dataService.getDocumentData().length != 0 ){
-      this.MaxPage = this.dataService.getDocumentData()[this.Folder].pages.length -1
+      this.MaxPage = this.dataService.getDocumentData()[this.Folder].pages.length-1
       if(this.Page >= this.MaxPage && this.Folder < this.dataService.getDocumentData().length-1){
         this.Folder++
         this.Page = 0
       }else if(this.Page < this.MaxPage){
         this.Page++
       }
-      console.log("Folder: "+this.Folder," Page: "+this.Page)
+      this.dataService.setPageData(this.Page)
+      this.dataService.setFolderData(this.Folder)
+      this.dataService.setImageDataFP(this.Folder,this.Page)
     }
   }
   backDoc(){
     if(this.dataService.getDocumentData().length != 0 ){
       if(this.Page <= 0 && this.Folder > 0){
         this.Folder--
-        this.Page = this.dataService.getDocumentData()[this.Folder].pages.length -1
+        this.Page = this.dataService.getDocumentData()[this.Folder].pages.length-1
       }else if(this.Page > 0){
         this.Page--
       }
-      console.log("Folder: "+this.Folder," Page: "+this.Page)
+      this.dataService.setPageData(this.Page)
+      this.dataService.setFolderData(this.Folder)
+      this.dataService.setImageDataFP(this.Folder,this.Page)
     }
   }
   DWObject: WebTwain | any = null;
@@ -103,8 +110,6 @@ export class ToolsBarComponent implements OnInit {
   barcode:string = ''
   docs:Documentdata[] = []
   async processAcquiredImages():Promise<void> {
-    this.dataService.setIndexData(1)
-    this.dataService.setMaxData(this.DWObject.HowManyImagesInBuffer)
     for (let index = 0; index < this.DWObject.HowManyImagesInBuffer; index++) {
       let base64 = await this.decodeBase64([index])
       let code = await this.decodeBarcode(base64)
