@@ -49,10 +49,10 @@ export class ToolsBarComponent implements OnInit {
   }
   backDoc(){
     if(this.dataService.getDocumentData().length != 0 ){
-      if(this.Page < 0 && this.Folder > 0){
+      if(this.Page <= 0 && this.Folder > 0){
         this.Folder--
         this.Page = this.dataService.getDocumentData()[this.Folder].pages.length -1
-      }else if(this.Page >= 0){
+      }else if(this.Page > 0){
         this.Page--
       }
       console.log("Folder: "+this.Folder," Page: "+this.Page)

@@ -1,52 +1,32 @@
 <div class="display-box">
   <div class="top-bar"></div>
-  <form action="">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" action="">
       <div class="head-info">
         <section class="item">
           <label class="tag-label" for="">ชื่อ - นามสกุล (ผู้ถือหุ้น)</label>
-          <input type="text" value="ชื่อไทย 123456">
+          <input type="text" formControlName="Name" >
         </section>
         <section class="item">
           <label class="tag-label" for="">มอบฉันทะให้</label>
-          <input type="text" value="นายศร">
+          <input type="text" formControlName="offerProxy">
         </section>
         <section class="item">
           <label class="tag-label" for="">ลายเซ็นผู้มอบฉันทะ</label>
           <div class="flexbox">
             <div class="checkbox-wrapper-33">
               <label class="checkbox">
-                <input class="checkbox__trigger visuallyhidden" type="radio" name="f"/>
+                <input class="checkbox__trigger visuallyhidden" type="radio" formControlName="signature" name="signature" [value]="'มี'"/>
                 <span class="checkbox__symbol">
-                  <svg
-                    aria-hidden="true"
-                    class="icon-checkbox"
-                    width="28px"
-                    height="28px"
-                    viewBox="0 0 28 28"
-                    version="1"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M4 14l8 7L24 7"></path>
-                  </svg>
+                  <svg aria-hidden="true" class="icon-checkbox" width="28px" height="28px" viewBox="0 0 28 28" version="1" xmlns="http://www.w3.org/2000/svg"><path d="M4 14l8 7L24 7"></path></svg>
                 </span>
                 <p class="checkbox__textwrapper">มี</p>
               </label>
             </div>
             <div class="checkbox-wrapper-33">
               <label class="checkbox">
-                <input class="checkbox__trigger visuallyhidden" type="radio" name="f"/>
+                <input  class="checkbox__trigger visuallyhidden" type="radio" formControlName="signature" name="signature" [value]="'ไม่มี'"/>
                 <span class="checkbox__symbol">
-                  <svg
-                    aria-hidden="true"
-                    class="icon-checkbox"
-                    width="28px"
-                    height="28px"
-                    viewBox="0 0 28 28"
-                    version="1"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M4 14l8 7L24 7"></path>
-                  </svg>
+                  <svg aria-hidden="true" class="icon-checkbox" width="28px" height="28px" viewBox="0 0 28 28" version="1" xmlns="http://www.w3.org/2000/svg"><path d="M4 14l8 7L24 7"></path></svg>
                 </span>
                 <p class="checkbox__textwrapper">ไม่มี</p>
               </label>
@@ -54,7 +34,9 @@
           </div>
         </section>
       </div>
-        <table class="fixed_header">
+
+      <div>
+        <table  class="fixed_header">
           <thead>
             <tr>
               <th>วาระที่</th>
@@ -64,108 +46,49 @@
             </tr>
           </thead>
           <tbody>
-            @for (item of balogic; track $index) {
-              @if(item.errLogic){
-                <tr class="err">
-                  <td>{{item.header}}</td>
-                  @for (Lgic of item.Logic; track $index) {
-                    @if (Lgic) {
-                      <td>
-                        <div class="checkbox-wrapper-33">
-                          <label class="checkbox">
-                            <input class="checkbox__trigger visuallyhidden" type="radio" name="{{item.header}}" checked/>
-                            <span class="checkbox__symbol">
-                              <svg
-                                aria-hidden="true"
-                                class="icon-checkbox"
-                                width="28px"
-                                height="28px"
-                                viewBox="0 0 28 28"
-                                version="1"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path d="M4 14l8 7L24 7"></path>
-                              </svg>
-                            </span>
-                          </label>
-                        </div>
-                      </td>
-                    }@else {
-                      <td>
-                        <div class="checkbox-wrapper-33">
-                          <label class="checkbox">
-                            <input class="checkbox__trigger visuallyhidden" type="radio" name="{{item.header}}"/>
-                            <span class="checkbox__symbol">
-                              <svg
-                                aria-hidden="true"
-                                class="icon-checkbox"
-                                width="28px"
-                                height="28px"
-                                viewBox="0 0 28 28"
-                                version="1"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path d="M4 14l8 7L24 7"></path>
-                              </svg>
-                            </span>
-                          </label>
-                        </div>
-                      </td>
-                    }
-                  }
-                </tr>
-              }@else {
-                <tr class="">
-                  <td>{{item.header}}</td>
-                  @for (Lgic of item.Logic; track $index) {
-                    @if (Lgic) {
-                      <td>
-                        <div class="checkbox-wrapper-33">
-                          <label class="checkbox">
-                            <input class="checkbox__trigger visuallyhidden" type="radio" name="{{item.header}}" checked/>
-                            <span class="checkbox__symbol">
-                              <svg
-                                aria-hidden="true"
-                                class="icon-checkbox"
-                                width="28px"
-                                height="28px"
-                                viewBox="0 0 28 28"
-                                version="1"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path d="M4 14l8 7L24 7"></path>
-                              </svg>
-                            </span>
-                          </label>
-                        </div>
-                      </td>
-                    }@else {
-                      <td>
-                        <div class="checkbox-wrapper-33">
-                          <label class="checkbox">
-                            <input class="checkbox__trigger visuallyhidden" type="radio" name="{{item.header}}"/>
-                            <span class="checkbox__symbol">
-                              <svg
-                                aria-hidden="true"
-                                class="icon-checkbox"
-                                width="28px"
-                                height="28px"
-                                viewBox="0 0 28 28"
-                                version="1"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path d="M4 14l8 7L24 7"></path>
-                              </svg>
-                            </span>
-                          </label>
-                        </div>
-                      </td>
-                    }
-                  }
-                </tr>
-              }
-            }
+            @for (quest of questions; track $index) {
+            <tr>
+              <td class="text-head"><p>{{quest.name}}</p></td>
+              <td>
+                <div class="checkbox-wrapper-33">
+                  <label class="checkbox">
+                    <input  formControlName="{{quest.name}}" name="{{quest.name}}" value="{{quest.ans1}}" class="checkbox__trigger visuallyhidden" type="radio" />
+                    <span class="checkbox__symbol">
+                      <svg aria-hidden="true" class="icon-checkbox" width="28px" height="28px" viewBox="0 0 28 28" version="1" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 14l8 7L24 7"></path>
+                      </svg>
+                    </span>
+                  </label>
+                  </div>
+              </td>
+              <td>
+                <div class="checkbox-wrapper-33">
+                  <label class="checkbox">
+                    <input formControlName="{{quest.name}}" name="{{quest.name}}" value="{{quest.ans2}}" class="checkbox__trigger visuallyhidden" type="radio" />
+                    <span class="checkbox__symbol">
+                      <svg aria-hidden="true" class="icon-checkbox" width="28px" height="28px" viewBox="0 0 28 28" version="1" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 14l8 7L24 7"></path>
+                      </svg>
+                    </span>
+                  </label>
+                  </div>
+              </td>
+              <td>
+                <div class="checkbox-wrapper-33">
+                  <label class="checkbox">
+                    <input formControlName="{{quest.name}}" name="{{quest.name}}" value="{{quest.ans3}}" class="checkbox__trigger visuallyhidden" type="radio" />
+                    <span class="checkbox__symbol">
+                      <svg aria-hidden="true" class="icon-checkbox" width="28px" height="28px" viewBox="0 0 28 28" version="1" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 14l8 7L24 7"></path>
+                      </svg>
+                    </span>
+                  </label>
+                  </div>
+              </td>
+            </tr>
+           }
           </tbody>
         </table>
+      </div>
   </form>
 </div>

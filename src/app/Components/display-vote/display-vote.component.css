@@ -30,6 +30,7 @@
 }
 
 tbody{
+
   overflow-y:scroll;
 }
 .flexbox{
@@ -187,13 +188,14 @@ table {
   border-collapse: collapse;
   width: 100%;
   margin-top: 30px;
+  font-size: 22px;
+
 }
 
 td, th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
-  font-size: 22px;
 
 }
 th{
@@ -219,7 +221,8 @@ td .checkbox-wrapper-33{
 .fixed_header tbody{
 display:block;
 width: 100%;
-overflow: auto;
+overflow: hidden;
+overflow-y: auto;
 height: 550px;
 }
 
@@ -235,7 +238,13 @@ color:#fff;
 .fixed_header th, .fixed_header td {
 padding: 5px;
 text-align: left;
-width: 200px;
+min-width: 160px;
+}
+.text-head{
+  max-width: 160px;
+}
+.text-head p{
+  max-width: 160px;
 }
 
 .fixed_header th{

@@ -14,7 +14,7 @@ export class DynamsoftService {
 
   private initDynamsoft() {
     BarcodeScanner.engineResourcePath = 'https://cdn.jsdelivr.net/npm/dynamsoft-javascript-barcode/dist/';
-    BarcodeScanner.productKeys = 'DLS2eyJoYW5kc2hha2VDb2RlIjoiMTAyODM1OTYxLVRYbFhaV0pRY205cSIsIm1haW5TZXJ2ZXJVUkwiOiJodHRwczovL21kbHMuZHluYW1zb2Z0b25saW5lLmNvbSIsIm9yZ2FuaXphdGlvbklEIjoiMTAyODM1OTYxIiwic3RhbmRieVNlcnZlclVSTCI6Imh0dHBzOi8vc2Rscy5keW5hbXNvZnRvbmxpbmUuY29tIiwiY2hlY2tDb2RlIjotODIxMDc3MzMyfQ==';
+    BarcodeScanner.productKeys = 'DLS2eyJoYW5kc2hha2VDb2RlIjoiMTAyOTE3ODQyLVRYbFhaV0pRY205cSIsIm1haW5TZXJ2ZXJVUkwiOiJodHRwczovL21kbHMuZHluYW1zb2Z0b25saW5lLmNvbSIsIm9yZ2FuaXphdGlvbklEIjoiMTAyOTE3ODQyIiwic3RhbmRieVNlcnZlclVSTCI6Imh0dHBzOi8vc2Rscy5keW5hbXNvZnRvbmxpbmUuY29tIiwiY2hlY2tDb2RlIjoyMTE2OTc3NjEyfQ==';
   }
 
   async createBarcodeReader() {
