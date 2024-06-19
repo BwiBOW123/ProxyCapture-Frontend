@@ -28,7 +28,6 @@ export class DisplayDocumentComponent implements OnInit, OnDestroy{
   }
 
   ngOnInit() {
-
     this.fitWindowSubscription = this.dataService.fitclass$.subscribe(fitclass =>{
       this.fitWindow = fitclass
     })

@@ -1,11 +1,59 @@
-.display-box{
-  border-radius: 10px;
-  width: 30rem;
-  height: 75vh;
-  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
-  overflow-y: auto;
-  overflow-x: hidden;
+
+@media only screen and (max-width: 1920px)   {
+  .display-box{
+    border-radius: 10px;
+    width: 30rem;
+    height: 53rem;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+  }
 }
+
+@media only screen and (max-width: 1680px) {
+  .display-box{
+    border-radius: 10px;
+    width: 25rem;
+    height: 50rem;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+
+@media only screen and (max-width: 1440px){
+  .display-box{
+    border-radius: 10px;
+    width: 20rem;
+    height: 40rem;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+@media only screen and (max-width: 1280px){
+  .display-box{
+    border-radius: 10px;
+    width: 20rem;
+    height: 35rem;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+
+@media only screen and (max-width: 1024px){
+  .display-box{
+    border-radius: 10px;
+    width: 15rem;
+    height: 32rem;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+
 .top-bar{
   position: sticky;
   top: 0;
@@ -14,3 +62,4 @@
   height: 3rem;
   background-color: #1254B9;
 }
+

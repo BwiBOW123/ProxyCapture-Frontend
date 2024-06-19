@@ -1,18 +1,510 @@
-.display-box{
-  border-radius: 10px;
-  width: 40rem;
-  height: 75vh;
-  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
-  overflow: hidden;
+
+:focus{
+    border: 1px solid #000;
+    border-radius: 4px;
 }
-.top-bar{
+
+@media only screen and (max-width: 1920px)  {
+  .display-box{
+    border-radius: 10px;
+    width: 30rem;
+    height: 53rem;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    overflow: hidden;
+    
+  }
+  .fixed_header th, .fixed_header td {
+    padding: 5px;
+    text-align: left;
+    min-width: 120px;
+  }
+  .item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 28rem;
+  }
+  input[type="text"]{
+    padding: 7px;
+    border-radius: 6px;
+    font-size: 16px;
+    background: #fbfbfb;
+    border: 2px solid transparent;
+    height: 36px;
+    box-shadow: 0 0 0 1px #dddddd, 0 2px 4px 0 rgb(0 0 0 / 7%), 0 1px 1.5px 0 rgb(0 0 0 / 5%);
+    width: 14rem;
+    font-size: 22px;
+  }
+  p{
+    font-size: 22px;
+  }
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 30px;
+    font-size: 22px;
+  }
+  tbody{
+    overflow-y:scroll;
+  }
+  .flexbox{
+    display: flex;
+    align-items: center;
+  }
+
+  .tag-label{
+    font-size: 22px;
+  }
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+
+  }
+  th{
+    padding: 10px 50px;
+    background-color: #171717;
+    color: white;
+  }
+
+  td .checkbox-wrapper-33{
+    display: flex;
+    justify-content: center;
+  }
+
+  .fixed_header{
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+  }
+
+  .fixed_header tbody{
+    display:block;
+    width: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    height: 400px;
+  }
+
+  .fixed_header thead tr {
+   display: block;
+  }
+
+  .fixed_header thead {
+  background: black;
+  color:#fff;
+  }
+  .text-head{
+    max-width: 160px;
+  }
+  .text-head p{
+    max-width: 160px;
+  }
+
+  .fixed_header th{
+    text-align: center;
+    padding: 10px 0;
+  }
+}
+
+
+@media only screen and (max-width: 1680px){
+  .display-box{
+    border-radius: 10px;
+    width: 30rem;
+    height: 50rem;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    overflow: hidden;
+  }
+  .fixed_header th, .fixed_header td {
+    padding: 5px;
+    text-align: left;
+    min-width: 120px;
+  }
+  .item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 27rem;
+  }
+  input[type="text"]{
+    padding: 7px;
+    border-radius: 6px;
+    font-size: 16px;
+    background: #fbfbfb;
+    border: 2px solid transparent;
+    height: 36px;
+    box-shadow: 0 0 0 1px #dddddd, 0 2px 4px 0 rgb(0 0 0 / 7%), 0 1px 1.5px 0 rgb(0 0 0 / 5%);
+    width: 12rem;
+    font-size: 22px;
+  }
+  p{
+    font-size: 22px;
+  }
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 30px;
+    font-size: 22px;
+  }
+  tbody{
+    overflow-y:scroll;
+  }
+  .flexbox{
+    display: flex;
+    align-items: center;
+  }
+
+  .tag-label{
+    font-size: 22px;
+  }
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  th{
+    padding: 10px 50px;
+    background-color: #171717;
+    color: white;
+  }
+
+  td .checkbox-wrapper-33{
+    display: flex;
+    justify-content: center;
+  }
+
+  .fixed_header{
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+  }
+
+  .fixed_header tbody{
+  display:block;
   width: 100%;
-  height: 3rem;
-  background-color: #1254B9;
-  position: sticky;
-  top: 0;
-  left: 0;
+  overflow: hidden;
+  overflow-y: auto;
+  height: 500px;
+  }
+
+  .fixed_header thead tr {
+   display: block;
+  }
+
+  .fixed_header thead {
+  background: black;
+  color:#fff;
+  }
+
+
+  .text-head{
+    max-width: 160px;
+  }
+  .text-head p{
+    max-width: 160px;
+  }
+
+  .fixed_header th{
+    text-align: center;
+    padding: 10px 0;
+  }
 }
+
+@media only screen and (max-width: 1440px){
+  .display-box{
+    border-radius: 10px;
+    width: 25rem;
+    height: 40rem;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    overflow: hidden;
+  }
+  .fixed_header th, .fixed_header td {
+    padding: 5px;
+    text-align: left;
+    min-width: 100px;
+  }
+  .item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 23rem;
+  }
+  input[type="text"]{
+    padding: 7px;
+    border-radius: 6px;
+    font-size: 16px;
+    background: #fbfbfb;
+    border: 2px solid transparent;
+    height: 36px;
+    box-shadow: 0 0 0 1px #dddddd, 0 2px 4px 0 rgb(0 0 0 / 7%), 0 1px 1.5px 0 rgb(0 0 0 / 5%);
+    width: 12rem;
+    font-size: 18px;
+  }
+  p{
+    font-size: 18px;
+  }
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 30px;
+    font-size: 22px;
+  }
+  tbody{
+    overflow-y:scroll;
+  }
+  .flexbox{
+    display: flex;
+    align-items: center;
+  }
+
+  .tag-label{
+    font-size: 22px;
+  }
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+
+  }
+  th{
+    padding: 10px 50px;
+    background-color: #171717;
+    color: white;
+  }
+
+  td .checkbox-wrapper-33{
+    display: flex;
+    justify-content: center;
+  }
+
+  .fixed_header{
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+  }
+
+  .fixed_header tbody{
+  display:block;
+  width: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+  height: 350px;
+  }
+
+  .fixed_header thead tr {
+   display: block;
+  }
+
+  .fixed_header thead {
+  background: black;
+  color:#fff;
+  }
+
+
+  .text-head{
+    max-width: 160px;
+  }
+  .text-head p{
+    max-width: 160px;
+  }
+
+  .fixed_header th{
+    text-align: center;
+    padding: 10px 0;
+  }
+
+}
+@media only screen and (max-width: 1280px){
+  .display-box{
+    border-radius: 10px;
+    width: 25rem;
+    height: 35rem;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    overflow: hidden;
+  }
+  .fixed_header th, .fixed_header td {
+    padding: 5px;
+    text-align: left;
+    min-width: 100px;
+  }
+  .item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 23rem;
+  }
+  input[type="text"]{
+    padding: 7px;
+    border-radius: 6px;
+    font-size: 16px;
+    background: #fbfbfb;
+    border: 2px solid transparent;
+    height: 36px;
+    box-shadow: 0 0 0 1px #dddddd, 0 2px 4px 0 rgb(0 0 0 / 7%), 0 1px 1.5px 0 rgb(0 0 0 / 5%);
+    width: 12rem;
+    font-size: 18px;
+  }
+  p{
+    font-size: 18px;
+  }
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 30px;
+    font-size: 22px;
+  }
+  tbody{
+    overflow-y:scroll;
+  }
+  .flexbox{
+    display: flex;
+    align-items: center;
+  }
+  .tag-label{
+    font-size: 22px;
+  }
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  th{
+    padding: 10px 50px;
+    background-color: #171717;
+    color: white;
+  }
+  td .checkbox-wrapper-33{
+    display: flex;
+    justify-content: center;
+  }
+  .fixed_header{
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+  }
+  .fixed_header tbody{
+  display:block;
+  width: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+  height: 290px;
+  }
+  .fixed_header thead tr {
+   display: block;
+  }
+  .fixed_header thead {
+  background: black;
+  color:#fff;
+  }
+  .text-head{
+    max-width: 160px;
+  }
+  .text-head p{
+    max-width: 160px;
+  }
+  .fixed_header th{
+    text-align: center;
+    padding: 10px 0;
+  }
+}
+
+@media only screen and (max-width: 1024px){
+  .display-box{
+    border-radius: 10px;
+    width: 25rem;
+    height: 32rem;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    overflow: hidden;
+  }
+  .fixed_header th, .fixed_header td {
+    padding: 5px;
+    text-align: left;
+    min-width: 100px;
+  }
+  .item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 22rem;
+  }
+  input[type="text"]{
+    padding: 7px;
+    border-radius: 6px;
+    font-size: 16px;
+    background: #fbfbfb;
+    border: 2px solid transparent;
+    height: 36px;
+    box-shadow: 0 0 0 1px #dddddd, 0 2px 4px 0 rgb(0 0 0 / 7%), 0 1px 1.5px 0 rgb(0 0 0 / 5%);
+    width: 12rem;
+    font-size: 16px;
+  }
+  p{
+    font-size: 16px;
+  }
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 30px;
+    font-size: 22px;
+  }
+  tbody{
+    overflow-y:scroll;
+  }
+  .flexbox{
+    display: flex;
+    align-items: center;
+  }
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  th{
+    padding: 10px 50px;
+    background-color: #171717;
+    color: white;
+  }
+  td .checkbox-wrapper-33{
+    display: flex;
+    justify-content: center;
+  }
+  .fixed_header{
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+  }
+  .fixed_header tbody{
+  display:block;
+  width: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+  height: 240px;
+  }
+  .fixed_header thead tr {
+   display: block;
+  }
+  .fixed_header thead {
+  background: black;
+  color:#fff;
+  }
+  .text-head{
+    max-width: 160px;
+  }
+  .text-head p{
+    max-width: 160px;
+  }
+  .fixed_header th{
+    text-align: center;
+    padding: 10px 0;
+  }
+}
+
 
 .head-info{
   margin-top: 30px;
@@ -22,32 +514,15 @@
   gap: 10px;
 }
 
-.item{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 35rem;
+.top-bar{
+  width: 100%;
+  height: 3rem;
+  background-color: #1254B9;
+  position: sticky;
+  top: 0;
+  left: 0;
 }
 
-tbody{
-
-  overflow-y:scroll;
-}
-.flexbox{
-  display: flex;
-  align-items: center;
-}
-
-.tag-label{
-  font-size: 22px;
-}
-
-input[type="text"]{
-  padding: 5px;
-  border-radius: 5px;
-  width: 20rem;
-  font-size: 22px;
-}
 
 
 .checkbox-wrapper-33 {
@@ -179,77 +654,6 @@ input[type="text"]{
     opacity: 0;
     transform: scale(20);
   }
-}
-
-
-
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-  margin-top: 30px;
-  font-size: 22px;
-
-}
-
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-
-}
-th{
-  padding: 10px 50px;
-  background-color: #171717;
-  color: white;
-}
-
-td .checkbox-wrapper-33{
-  display: flex;
-  justify-content: center;
-}
-
-
-
-
-.fixed_header{
-  width: 100%;
-  table-layout: fixed;
-  border-collapse: collapse;
-}
-
-.fixed_header tbody{
-display:block;
-width: 100%;
-overflow: hidden;
-overflow-y: auto;
-height: 550px;
-}
-
-.fixed_header thead tr {
- display: block;
-}
-
-.fixed_header thead {
-background: black;
-color:#fff;
-}
-
-.fixed_header th, .fixed_header td {
-padding: 5px;
-text-align: left;
-min-width: 160px;
-}
-.text-head{
-  max-width: 160px;
-}
-.text-head p{
-  max-width: 160px;
-}
-
-.fixed_header th{
-  text-align: center;
-  padding: 10px 0;
 }
 
 tr.err{

@@ -37,7 +37,8 @@ export class DisplayVoteComponent implements OnInit {
       ans2:"ไม่เห็นด้วย",
       ans3:"งดออกเสียง",
       select:"เห็นด้วย"
-    },   {
+    },
+    {
       name:"วาระที่ 5",
       ans1:"เห็นด้วย",
       ans2:"ไม่เห็นด้วย",

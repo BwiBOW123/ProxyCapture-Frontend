@@ -3,15 +3,15 @@
   <form [formGroup]="form" (ngSubmit)="onSubmit()" action="">
       <div class="head-info">
         <section class="item">
-          <label class="tag-label" for="">ชื่อ - นามสกุล (ผู้ถือหุ้น)</label>
+          <label class="tag-label" for=""><p>ชื่อ - นามสกุล (ผู้ถือหุ้น)</p></label>
           <input type="text" formControlName="Name" >
         </section>
         <section class="item">
-          <label class="tag-label" for="">มอบฉันทะให้</label>
+          <label class="tag-label" for=""><p>มอบฉันทะให้</p></label>
           <input type="text" formControlName="offerProxy">
         </section>
         <section class="item">
-          <label class="tag-label" for="">ลายเซ็นผู้มอบฉันทะ</label>
+          <label class="tag-label" for=""><p>ลายเซ็นผู้มอบฉันทะ</p></label>
           <div class="flexbox">
             <div class="checkbox-wrapper-33">
               <label class="checkbox">
@@ -39,10 +39,10 @@
         <table  class="fixed_header">
           <thead>
             <tr>
-              <th>วาระที่</th>
-              <th>เห็นด้วย</th>
-              <th>ไม่เห็นด้วย</th>
-              <th>งดออกเสียง</th>
+              <th><p>วาระที่</p></th>
+              <th><p>เห็นด้วย</p></th>
+              <th><p>ไม่เห็นด้วย</p></th>
+              <th><p>งดออกเสียง</p></th>
             </tr>
           </thead>
           <tbody>
