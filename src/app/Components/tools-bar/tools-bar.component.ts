@@ -1,19 +1,25 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
 import { RouterLink } from '@angular/router';
 import { DataService } from '../../data.service';
 import Dynamsoft from 'dwt';
 import { WebTwain } from 'dwt/dist/types/WebTwain';
 import { DynamsoftService } from '../../dynamsoft.service';
+import { MesssageBoxComponent } from '../messsage-box/messsage-box.component';
 
 @Component({
   selector: 'app-tools-bar',
   standalone: true,
-  imports: [ButtonComponent,RouterLink],
+  imports: [ButtonComponent,RouterLink,MesssageBoxComponent],
   templateUrl: './tools-bar.component.html',
   styleUrl: './tools-bar.component.css'
 })
 export class ToolsBarComponent implements OnInit {
+  @ViewChild('dialog') dialog: any;
+
+  openDialog() {
+    this.dialog.open();
+  }
 
   path_img = ['../../../assets/img/print.png','../../../assets/img/fit_screen.png','../../../assets/img/open.png','../../../assets/img/arrow_back.png','../../../assets/img/arrow_forward.png','../../../assets/img/check.png','../../../assets/img/cancel.png']
 

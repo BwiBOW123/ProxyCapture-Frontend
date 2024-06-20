@@ -1,36 +1,39 @@
-<div class="message1 message-bar">\
-  @if (isProcessBox) {
-    <div class=" Box">
-      <div class="message-box">
-        <div class="head">
-          <p class="text-head">Processing</p>
-          <hr>
+@if (isOpen) {
+  <div class="message1 message-bar dialog">\
+    @if (isProcessBox) {
+      <div class=" Box">
+        <div class="message-box">
+          <div class="head">
+            <p class="text-head">Processing</p>
+            <hr>
+          </div>
+          <div class="center">
+            <div class="loader"></div>
+          </div>
+          <div class="footer">
+          </div>
         </div>
-        <div class="center">
-          <div class="loader"></div>
-        </div>
-        <div class="footer">
-        </div>
+        <div class="footbar"></div>
       </div>
-      <div class="footbar"></div>
-    </div>
-  }@else {
-    <div class=" Box">
-      <div class="message-box">
-        <div class="head">
-          <p class="text-head">{{textHead}}</p>
-          <hr>
+    }@else {
+      <div class=" Box">
+        <div class="message-box">
+          <div class="head">
+            <p class="text-head">{{textHead}}</p>
+            <hr>
+          </div>
+          <div class="center">
+            <p class="text-content">{{textContent}}</p>
+          </div>
+          <div class="footer">
+              <button (click)="close()">Yes</button>
+              <button (click)="close()">No</button>
+          </div>
         </div>
-        <div class="center">
-          <p class="text-content">{{textContent}}</p>
-        </div>
-        <div class="footer">
-            <button>Yes</button>
-            <button>No</button>
-        </div>
+        <div class="footbar"></div>
       </div>
-      <div class="footbar"></div>
-    </div>
-  }
+    }
 
-</div>
+  </div>
+
+}
