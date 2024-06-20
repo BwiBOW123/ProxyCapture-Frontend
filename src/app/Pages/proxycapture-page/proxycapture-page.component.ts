@@ -6,10 +6,11 @@ import { DisplayFileComponent } from '../../Components/display-file/display-file
 import { DisplayDocumentComponent } from '../../Components/display-document/display-document.component';
 import { DisplayVoteComponent } from '../../Components/display-vote/display-vote.component';
 import { ResizableDirective } from '../../resizable.directive'
+import { MesssageBoxComponent } from '../../Components/messsage-box/messsage-box.component';
 @Component({
   selector: 'app-proxycapture-page',
   standalone: true,
-  imports: [RouterLink,RouterOutlet,ToolsBarComponent,DisplayFileComponent,DisplayDocumentComponent,DisplayVoteComponent],
+  imports: [RouterLink,RouterOutlet,ToolsBarComponent,DisplayFileComponent,DisplayDocumentComponent,DisplayVoteComponent,MesssageBoxComponent],
   templateUrl: './proxycapture-page.component.html',
   styleUrl: './proxycapture-page.component.css'
 })
